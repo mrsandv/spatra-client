@@ -17,19 +17,32 @@ const List = styled.ul`
 `;
 
 const ImageWrap = styled.div`
+  width: 100%;
   display: flex;
+  flex-direction: column;
+  height: fit-content;
+  align-items: center;
 `;
 
 const Image = styled.img`
-  height: 50px;
-  width: 150px;
+  height: 200px;
+  width: 300px;
+  margin: 10px;
+`;
+
+const Label = styled.span`
+  font-weight: 600;
+  font-size: 16px;
+  color: #ce6262;
+  &:hover {
+    font-weight: 700;
+  }
 `;
 
 const Dialog = ({ data }: { data: any }) => {
-  const eraFile = btoa(String.fromCharCode(...new Uint8Array(data.eraFile)));
-  const idFile = btoa(String.fromCharCode(...new Uint8Array(data.idFile)));
-  const { name, middleName, lastName } = data;
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const idFile = new Buffer.from(data.idFile.data).toString("ascii");
+  const eraFile = new Buffer.from(data.eraFile.data).toString("ascii");
   return (
     <>
       <Button onClick={onOpen} colorScheme="red">
@@ -39,7 +52,7 @@ const Dialog = ({ data }: { data: any }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{data.name + data.lastName}</ModalHeader>
+          <ModalHeader>{`${data.name} ${data.middleName}`}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <List>
@@ -75,8 +88,10 @@ const Dialog = ({ data }: { data: any }) => {
               </Text>
             </List>
             <ImageWrap>
-              <Image src={`data:image/png;base64,${eraFile}`} />
+              <Label>Id file</Label>
               <Image src={`data:image/png;base64,${idFile}`} />
+              <Label>Era file</Label>
+              <Image src={`data:image/png;base64,${eraFile}`} />
             </ImageWrap>
           </ModalBody>
         </ModalContent>

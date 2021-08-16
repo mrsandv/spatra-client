@@ -3,6 +3,7 @@ import DataTable from "react-data-table-component";
 import { getApplicants } from "../redux/modules/applicants";
 import { useDispatch, useSelector } from "react-redux";
 import Dialog from "../components/Dialog";
+import Remove from "../components/Remove";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -44,7 +45,12 @@ const Admin = () => {
     {
       name: "More info",
       button: true,
-      cell: (row) => <Dialog data={row} />,
+      cell: (row: any) => <Dialog data={row} />,
+    },
+    {
+      name: "Eliminar",
+      button: true,
+      cell: (row: any) => <Remove data={row} />,
     },
   ];
 

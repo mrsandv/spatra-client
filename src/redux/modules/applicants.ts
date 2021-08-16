@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import * as applicantsAPI from '../../api/applicants';
 
 const GET_ALL_APPLICANTS = "applicants/GET_ALL_APPLICANTS";
@@ -5,7 +6,7 @@ const SEARCH_APPLICANT = 'applicants/SEARCH_APPLICANT';
 
 const INITIAL_STATE = {
   applicants: [],
-  applicant: '',
+  applicant: null,
 };
 
 export default function applicants(state = INITIAL_STATE, action: any) {
@@ -27,7 +28,7 @@ export const getApplicants = () => async (dispatch: any) => {
       payload: res.data,
     })
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
 
@@ -35,18 +36,40 @@ export const saveApplicant = (data: any) => async () => {
   try {
     await applicantsAPI.saveApplicant(data);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-}
+};
 
-export const searchApplicant = (folio: any) => async (dispatch: any) => {
+export const searchApplicantByFolio = (folio: any) => async (dispatch: any) => {
   try {
-    const res = await applicantsAPI.searchApplicant(folio);
+    const res = await applicantsAPI.searchApplicantByFolio(folio);
     dispatch({
       type: SEARCH_APPLICANT,
       payload: res.data,
     })
   } catch (err) {
-    console.log(err)
+    console.log(err);
+  }
+};
+
+export const searchApplicantByEmail = (email: any) => async (dispatch: any) => {
+  try {
+    const res = await applicantsAPI.searchApplicantByEmail(email);
+    dispatch({
+      type: SEARCH_APPLICANT,
+      payload: res.data,
+    })
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const removeApplicant = (folio: any) => async (dispatch: any) => {
+  try {
+    const res = await applicantsAPI.removeApplicant(folio);
+    toast.success(res.data.message);
+    dispatch(getApplicants());
+  } catch (err) {
+    console.log(err);
   }
 }
