@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Modal,
   ModalOverlay,
@@ -7,7 +8,13 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 
-export default function Congrats({ isOpen, onClose }) {
+export default function Congrats({
+  isOpen,
+  onClose,
+}: {
+  isOpen: any;
+  onClose: any;
+}) {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
