@@ -104,6 +104,11 @@ function Home() {
       <Link to="/save-the-day">
         <Label>Ya tengo folio</Label>
       </Link>
+      <div id="smart-button-container">
+        <div style={{ textAlign: "center" }}>
+          <div id="paypal-button-container"></div>
+        </div>
+      </div>
       <Form
         onSubmit={(e) => {
           e.preventDefault();
