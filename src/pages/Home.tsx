@@ -5,6 +5,14 @@ import {
   useDisclosure,
   Checkbox,
 } from "@chakra-ui/react";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  Box,
+  AccordionPanel,
+} from "@chakra-ui/react";
 import styled from "styled-components";
 import { MdSend } from "react-icons/md";
 import React, { useState } from "react";
@@ -102,190 +110,217 @@ function Home() {
   return (
     <Wrapper>
       <Link to="/save-the-day">
-        <Label>Ya tengo folio</Label>
+        <Label>Ya me registre</Label>
       </Link>
-      <div id="smart-button-container">
-        <div style={{ textAlign: "center" }}>
-          <div id="paypal-button-container"></div>
-        </div>
-      </div>
-      <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          dispatch(
-            saveApplicant({
-              name,
-              middleName,
-              lastName,
-              age,
-              email,
-              gender,
-              nationality,
-              phone,
-              firstLanguaje,
-              vacancy,
-              eraFile,
-              idFile,
-            })
-          );
-          onOpen();
-        }}
-      >
-        <Column width="33%">
-          <Input
-            placeholder="Name"
-            m={5}
-            required
-            onChange={(e) => setName(e.target.value)}
-          />
-          <Input
-            placeholder="Middle Name (optional)"
-            m={5}
-            onChange={(e) => setMiddleName(e.target.value)}
-          />
-          <Input
-            placeholder="Last Name"
-            m={5}
-            required
-            onChange={(e) => setLastName(e.target.value)}
-          />
-          <Input
-            placeholder="Age"
-            m={5}
-            required
-            type="number"
-            onChange={(e) => setAge(e.target.value)}
-          />
-          <Input
-            placeholder="E-mail"
-            type="email"
-            required
-            m={5}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Column>
-        <Column width="33%">
-          <Select
-            placeholder="Gender"
-            m={5}
-            onChange={(e) => setGender(e.target.value)}
-            required
-          >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Prefer not to say</option>
-          </Select>
-          <Input
-            placeholder="Nationality"
-            required
-            m={5}
-            onChange={(e) => setNationality(e.target.value)}
-          />
-          <Input
-            placeholder="Phone number"
-            type="tel"
-            required
-            m={5}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <Input
-            placeholder="Native language"
-            type="text"
-            required
-            m={5}
-            onChange={(e) => setFirstLanguaje(e.target.value)}
-          />
-          <Input
-            placeholder="Applied vacancy"
-            type="text"
-            required
-            m={5}
-            onChange={(e) => setVacancy(e.target.value)}
-          />
-        </Column>
-        <Column width="33%">
-          {idFile && (
-            <img
-              src={idFile}
-              style={{ height: "100px", width: "200px" }}
-              alt="preview-idDoc"
-            />
-          )}
-          <Text>Id file (png or jpg)</Text>
-          <input
-            placeholder="Electronic Recruitment Application file"
-            type="file"
-            accept="image/png, image/jpeg"
-            required
-            style={{ margin: "30px" }}
-            onChange={(e) => {
-              eraScreenshotHandler(e);
-            }}
-          />
-          {eraFile && (
-            <img
-              src={eraFile}
-              style={{ height: "100px", width: "200px" }}
-              alt="preview-era"
-            />
-          )}
-          <Text>ERA file (png or jpg)</Text>
-          <input
-            type="file"
-            style={{ margin: "30px" }}
-            accept="image/png, image/jpeg"
-            required
-            onChange={(e) => {
-              idDocumentHandler(e);
-            }}
-          />
-          <Checkbox
-            isRequired
-            isChecked={isTermsAccepted}
-            onChange={(e) => {
-              setIsTermsAccepted(!isTermsAccepted);
-            }}
-          >
-            <Terms />
-          </Checkbox>
-          <Checkbox
-            isRequired
-            isChecked={isPoliciesAccepted}
-            onChange={(e) => {
-              setIsPoliciesAccepted(!isPoliciesAccepted);
-            }}
-          >
-            <Policies />
-          </Checkbox>
-          <Button
-            disabled={
-              !(
-                name &&
-                lastName &&
-                isTermsAccepted &&
-                isPoliciesAccepted &&
-                age &&
-                email &&
-                gender &&
-                nationality &&
-                phone &&
-                firstLanguaje &&
-                vacancy &&
-                eraFile &&
-                idFile
-              )
-            }
-            type="submit"
-            m={5}
-            rightIcon={<MdSend />}
-            colorScheme="green"
-            variant="solid"
-          >
-            Register information
-          </Button>
-        </Column>
-      </Form>
-      <Congrats onClose={onClose} isOpen={isOpen} />
+      <Accordion>
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left">
+                Register for the exam
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault();
+                dispatch(
+                  saveApplicant({
+                    name,
+                    middleName,
+                    lastName,
+                    age,
+                    email,
+                    gender,
+                    nationality,
+                    phone,
+                    firstLanguaje,
+                    vacancy,
+                    eraFile,
+                    idFile,
+                  })
+                );
+                onOpen();
+              }}
+            >
+              <Column width="33%">
+                <Input
+                  placeholder="Name"
+                  m={5}
+                  required
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <Input
+                  placeholder="Middle Name (optional)"
+                  m={5}
+                  onChange={(e) => setMiddleName(e.target.value)}
+                />
+                <Input
+                  placeholder="Last Name"
+                  m={5}
+                  required
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+                <Input
+                  placeholder="Age"
+                  m={5}
+                  required
+                  type="number"
+                  onChange={(e) => setAge(e.target.value)}
+                />
+                <Input
+                  placeholder="E-mail"
+                  type="email"
+                  required
+                  m={5}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Column>
+              <Column width="33%">
+                <Select
+                  placeholder="Gender"
+                  m={5}
+                  onChange={(e) => setGender(e.target.value)}
+                  required
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Prefer not to say</option>
+                </Select>
+                <Input
+                  placeholder="Nationality"
+                  required
+                  m={5}
+                  onChange={(e) => setNationality(e.target.value)}
+                />
+                <Input
+                  placeholder="Phone number"
+                  type="tel"
+                  required
+                  m={5}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+                <Input
+                  placeholder="Native language"
+                  type="text"
+                  required
+                  m={5}
+                  onChange={(e) => setFirstLanguaje(e.target.value)}
+                />
+                <Input
+                  placeholder="Applied vacancy"
+                  type="text"
+                  required
+                  m={5}
+                  onChange={(e) => setVacancy(e.target.value)}
+                />
+              </Column>
+              <Column width="33%">
+                {idFile && (
+                  <img
+                    src={idFile}
+                    style={{ height: "100px", width: "200px" }}
+                    alt="preview-idDoc"
+                  />
+                )}
+                <Text>Id file (png or jpg)</Text>
+                <input
+                  placeholder="Electronic Recruitment Application file"
+                  type="file"
+                  accept="image/png, image/jpeg"
+                  required
+                  style={{ margin: "30px" }}
+                  onChange={(e) => {
+                    eraScreenshotHandler(e);
+                  }}
+                />
+                {eraFile && (
+                  <img
+                    src={eraFile}
+                    style={{ height: "100px", width: "200px" }}
+                    alt="preview-era"
+                  />
+                )}
+                <Text>ERA file (png or jpg)</Text>
+                <input
+                  type="file"
+                  style={{ margin: "30px" }}
+                  accept="image/png, image/jpeg"
+                  required
+                  onChange={(e) => {
+                    idDocumentHandler(e);
+                  }}
+                />
+                <Checkbox
+                  isRequired
+                  isChecked={isTermsAccepted}
+                  onChange={(e) => {
+                    setIsTermsAccepted(!isTermsAccepted);
+                  }}
+                >
+                  <Terms />
+                </Checkbox>
+                <Checkbox
+                  isRequired
+                  isChecked={isPoliciesAccepted}
+                  onChange={(e) => {
+                    setIsPoliciesAccepted(!isPoliciesAccepted);
+                  }}
+                >
+                  <Policies />
+                </Checkbox>
+                <Button
+                  disabled={
+                    !(
+                      name &&
+                      lastName &&
+                      isTermsAccepted &&
+                      isPoliciesAccepted &&
+                      age &&
+                      email &&
+                      gender &&
+                      nationality &&
+                      phone &&
+                      firstLanguaje &&
+                      vacancy &&
+                      eraFile &&
+                      idFile
+                    )
+                  }
+                  type="submit"
+                  m={5}
+                  rightIcon={<MdSend />}
+                  colorScheme="green"
+                  variant="solid"
+                >
+                  Register information
+                </Button>
+              </Column>
+            </Form>
+            <Congrats onClose={onClose} isOpen={isOpen} />
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left">
+                Make your payment
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <div id="smart-button-container">
+              <div style={{ textAlign: "center" }}>
+                <div id="paypal-button-container"></div>
+              </div>
+            </div>
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
     </Wrapper>
   );
 }
