@@ -70,7 +70,7 @@ const SaveTheDay = () => {
             <Form
               onSubmit={async (e) => {
                 e.preventDefault();
-                dispatch(searchApplicantByFolio({ folio }));
+                dispatch(searchApplicantByFolio(folio));
               }}
             >
               <p>

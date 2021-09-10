@@ -11,7 +11,9 @@ import {
 export default function Congrats({
   isOpen,
   onClose,
+  data,
 }: {
+  data: any;
   isOpen: any;
   onClose: any;
 }) {
@@ -22,7 +24,11 @@ export default function Congrats({
         <ModalContent>
           <ModalHeader>Registro exitoso</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>Hola!</ModalBody>
+          <ModalBody>{data &&
+            (<><h1>{data.name}</h1>
+            <p>Your folio of registration is: <strong>{data._id}</strong></p>
+            <span>Save it, to continue the process</span> </>)
+          }</ModalBody>
         </ModalContent>
       </Modal>
     </>

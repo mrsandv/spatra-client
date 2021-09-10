@@ -55,7 +55,7 @@ const Calendar = ({ data }: { data: any }) => {
             <b>Middle:</b> {data.middleName}
           </Text>
           <Text>
-            <b>Last:</b> {data.laame}
+            <b>Last:</b> {data.lastName}
           </Text>
           <Text>
             <b>Email:</b> {data.email}
@@ -76,7 +76,7 @@ const Calendar = ({ data }: { data: any }) => {
             <b>Nationality:</b> {data.nationality}
           </Text>
           <Text>
-            <b>Native lang:</b> {data.firstLanguaje}
+            <b>Native lang:</b> {data.firstLanguage}
           </Text>
           <Button
             colorScheme="red"
@@ -90,9 +90,9 @@ const Calendar = ({ data }: { data: any }) => {
         </List>
         <ImageWrap>
           <Label>Id file</Label>
-          <Image src={`data:image/png;base64,${idFile}`} />
+          <Image src={idFile} />
           <Label>Era file</Label>
-          <Image src={`data:image/png;base64,${eraFile}`} />
+          <Image src={eraFile} />
         </ImageWrap>
       </Information>
       {open && (

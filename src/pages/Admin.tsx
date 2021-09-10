@@ -18,6 +18,11 @@ const Admin = () => {
   const applicants = useSelector((state: any) => state.applicants.applicants);
   const columns = [
     {
+      name: "Folio",
+      selector: "_id",
+      sortable: true,
+    },
+    {
       name: "Nombre",
       selector: "name",
       sortable: true,

@@ -2,7 +2,6 @@ import {
   Button,
   Input,
   Select,
-  useDisclosure,
   Checkbox,
 } from "@chakra-ui/react";
 import {
@@ -16,12 +15,10 @@ import {
 import styled from "styled-components";
 import { MdSend } from "react-icons/md";
 import React, { useState } from "react";
-import Congrats from "../components/Congrats";
-import Terms from "../components/Terms";
-import Policies from "../components/Policies";
 import { saveApplicant } from "../redux/modules/applicants";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Wrapper = styled.div`
   display: flex;
@@ -72,13 +69,12 @@ function Home() {
   const [gender, setGender] = useState("");
   const [nationality, setNationality] = useState("");
   const [phone, setPhone] = useState("");
-  const [firstLanguaje, setFirstLanguaje] = useState("");
+  const [firstLanguage, setFirstLanguage] = useState("");
   const [vacancy, setVacancy] = useState("");
   const [eraFile, setEraFile] = useState("");
   const [idFile, setIdFile] = useState("");
   const [isTermsAccepted, setIsTermsAccepted] = useState(false);
   const [isPoliciesAccepted, setIsPoliciesAccepted] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const eraScreenshotHandler = async (e: any) => {
     const file = e.target.files[0];
@@ -110,7 +106,7 @@ function Home() {
   return (
     <Wrapper>
       <Link to="/save-the-day">
-        <Label>Ya me registre</Label>
+        <Label>I already registered</Label>
       </Link>
       <Accordion>
         <AccordionItem>
@@ -136,13 +132,12 @@ function Home() {
                     gender,
                     nationality,
                     phone,
-                    firstLanguaje,
+                    firstLanguage,
                     vacancy,
                     eraFile,
                     idFile,
                   })
                 );
-                onOpen();
               }}
             >
               <Column width="33%">
@@ -207,7 +202,7 @@ function Home() {
                   type="text"
                   required
                   m={5}
-                  onChange={(e) => setFirstLanguaje(e.target.value)}
+                  onChange={(e) => setFirstLanguage(e.target.value)}
                 />
                 <Input
                   placeholder="Applied vacancy"
@@ -260,7 +255,11 @@ function Home() {
                     setIsTermsAccepted(!isTermsAccepted);
                   }}
                 >
-                  <Terms />
+                        <p style={{ margin: "15px 0" }} onClick={()=>{
+                     Swal.fire({title:'Confidentiality agreement',text:'example text',icon:'info',confirmButtonText:'I agree'}).then(()=>setIsTermsAccepted(!isTermsAccepted))
+                        }}>
+        I accept the terms and conditions.
+      </p>
                 </Checkbox>
                 <Checkbox
                   isRequired
@@ -269,7 +268,11 @@ function Home() {
                     setIsPoliciesAccepted(!isPoliciesAccepted);
                   }}
                 >
-                  <Policies />
+                   <p style={{ margin: "15px 0" }} onClick={()=>{
+                     Swal.fire({title:'Confidentiality agreement',text:'example text',icon:'info',confirmButtonText:'I agree'}).then(()=>setIsPoliciesAccepted(!isPoliciesAccepted))
+                   }}>
+        I accept the confidentiality agreement
+      </p>
                 </Checkbox>
                 <Button
                   disabled={
@@ -283,7 +286,7 @@ function Home() {
                       gender &&
                       nationality &&
                       phone &&
-                      firstLanguaje &&
+                      firstLanguage &&
                       vacancy &&
                       eraFile &&
                       idFile
@@ -299,7 +302,6 @@ function Home() {
                 </Button>
               </Column>
             </Form>
-            <Congrats onClose={onClose} isOpen={isOpen} />
           </AccordionPanel>
         </AccordionItem>
 
