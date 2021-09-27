@@ -97,7 +97,7 @@ const Calendar = ({ data }: { data: any }) => {
       </Information>
       {open && (
         <InlineWidget
-          url="https://calendly.com/msandoval-dev"
+          url="https://calendly.com/spanish-ta"
           prefill={{
             email: data.email,
             firstName: data.name,
