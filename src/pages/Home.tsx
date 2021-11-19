@@ -1,9 +1,4 @@
-import {
-  Button,
-  Input,
-  Select,
-  Checkbox,
-} from "@chakra-ui/react";
+import { Button, Input, Select, Checkbox } from "@chakra-ui/react";
 import {
   Accordion,
   AccordionItem,
@@ -11,6 +6,7 @@ import {
   AccordionIcon,
   Box,
   AccordionPanel,
+  Heading,
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import { MdSend } from "react-icons/md";
@@ -41,15 +37,6 @@ const Column = styled.div<{ width: string }>`
   @media screen and (max-width: 780px) {
     margin: 0 auto;
     width: 80%;
-  }
-`;
-
-const Label = styled.span`
-  font-weight: 600;
-  font-size: 16px;
-  color: #ce6262;
-  &:hover {
-    font-weight: 700;
   }
 `;
 
@@ -105,15 +92,14 @@ function Home() {
 
   return (
     <Wrapper>
-      <Link to="/save-the-day">
-        <Label>I already registered</Label>
-      </Link>
-      <Accordion>
+      <Accordion allowMultiple>
         <AccordionItem>
           <h2>
             <AccordionButton>
               <Box flex="1" textAlign="left">
-                Register for the exam
+                <Heading as="h2" size="lg">
+                  Step 1: Register for the exam
+                </Heading>
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -222,13 +208,13 @@ function Home() {
                 )}
                 <Text>Id file (png or jpg)</Text>
                 <input
-                  placeholder="Electronic Recruitment Application file"
+                  placeholder="Identification file"
                   type="file"
                   accept="image/png, image/jpeg"
                   required
                   style={{ margin: "30px" }}
                   onChange={(e) => {
-                    eraScreenshotHandler(e);
+                    idDocumentHandler(e);
                   }}
                 />
                 {eraFile && (
@@ -245,7 +231,7 @@ function Home() {
                   accept="image/png, image/jpeg"
                   required
                   onChange={(e) => {
-                    idDocumentHandler(e);
+                    eraScreenshotHandler(e);
                   }}
                 />
                 <Checkbox
@@ -255,11 +241,19 @@ function Home() {
                     setIsTermsAccepted(!isTermsAccepted);
                   }}
                 >
-                        <p style={{ margin: "15px 0" }} onClick={()=>{
-                     Swal.fire({title:'Confidentiality agreement',text:'example text',icon:'info',confirmButtonText:'I agree'}).then(()=>setIsTermsAccepted(!isTermsAccepted))
-                        }}>
-        I accept the terms and conditions.
-      </p>
+                  <p
+                    style={{ margin: "15px 0" }}
+                    onClick={() => {
+                      Swal.fire({
+                        title: "Confidentiality agreement",
+                        text: "example text",
+                        icon: "info",
+                        confirmButtonText: "I agree",
+                      }).then(() => setIsTermsAccepted(!isTermsAccepted));
+                    }}
+                  >
+                    I accept the terms and conditions.
+                  </p>
                 </Checkbox>
                 <Checkbox
                   isRequired
@@ -268,11 +262,19 @@ function Home() {
                     setIsPoliciesAccepted(!isPoliciesAccepted);
                   }}
                 >
-                   <p style={{ margin: "15px 0" }} onClick={()=>{
-                     Swal.fire({title:'Confidentiality agreement',text:'example text',icon:'info',confirmButtonText:'I agree'}).then(()=>setIsPoliciesAccepted(!isPoliciesAccepted))
-                   }}>
-        I accept the confidentiality agreement
-      </p>
+                  <p
+                    style={{ margin: "15px 0" }}
+                    onClick={() => {
+                      Swal.fire({
+                        title: "Confidentiality agreement",
+                        text: "example text",
+                        icon: "info",
+                        confirmButtonText: "I agree",
+                      }).then(() => setIsPoliciesAccepted(!isPoliciesAccepted));
+                    }}
+                  >
+                    I accept the confidentiality agreement
+                  </p>
                 </Checkbox>
                 <Button
                   disabled={
@@ -309,7 +311,9 @@ function Home() {
           <h2>
             <AccordionButton>
               <Box flex="1" textAlign="left">
-                Make your payment
+                <Heading as="h2" size="lg">
+                  Step 2: Make your payment
+                </Heading>
               </Box>
               <AccordionIcon />
             </AccordionButton>
@@ -320,6 +324,26 @@ function Home() {
                 <div id="paypal-button-container"></div>
               </div>
             </div>
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex="1" textAlign="left">
+                <Heading as="h2" size="lg">
+                  Step 3: Book your evaluation
+                </Heading>
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            Wait at least 48 hours after your payment to save the date
+            <br />
+            <br />
+            <Link style={{ margin: "30px 0" }} to="/save-the-day">
+              <Button colorScheme="red">I already registered</Button>
+            </Link>
           </AccordionPanel>
         </AccordionItem>
       </Accordion>

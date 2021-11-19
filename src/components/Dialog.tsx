@@ -19,7 +19,7 @@ const List = styled.ul`
 const ImageWrap = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: fit-content;
   align-items: center;
 `;
@@ -45,18 +45,18 @@ const Dialog = ({ data }: { data: any }) => {
   const eraFile = new Buffer.from(data.eraFile.data).toString("ascii");
   return (
     <>
-      <Button onClick={onOpen} colorScheme="red">
+      <Button onClick={onOpen} colorScheme="purple">
         More info
       </Button>
 
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal size="3xl" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{`${data.name} ${data.middleName}`}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <List>
-            <Text>
+              <Text>
                 <b>Folio:</b> {data._id}
               </Text>
               <Text>

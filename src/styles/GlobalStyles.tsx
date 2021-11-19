@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     *:before,
     *:after {
         box-sizing: border-box;
+        /* outline: dashed deeppink 1px; */
     }
 `;
 

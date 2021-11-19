@@ -12,9 +12,9 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   margin: 0 auto;
-  padding: 5px 10px;
+  padding: 5px 30px 5px 10px;
 `;
 
 const Menu = () => {

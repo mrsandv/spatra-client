@@ -4,8 +4,8 @@ import Footer from "./Footer";
 import styled from "styled-components";
 
 const ContentWrapper = styled.div`
-  max-width: 100vw;
-  min-height: 84vh;
+  width: 98vw;
+  min-height: 80vh;
 `;
 
 const Layout = ({ children }: { children: ReactNode }) => (
