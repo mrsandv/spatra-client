@@ -1,5 +1,8 @@
-import { Button, Input, Select, Checkbox } from "@chakra-ui/react";
 import {
+  Button,
+  Input,
+  Select,
+  Checkbox,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -8,6 +11,7 @@ import {
   AccordionPanel,
   Heading,
 } from "@chakra-ui/react";
+
 import styled from "styled-components";
 import { MdSend } from "react-icons/md";
 import React, { useState } from "react";
@@ -89,7 +93,7 @@ function Home() {
       };
     });
   };
-
+  // console.log(phone);
   return (
     <Wrapper>
       <Accordion allowMultiple>
@@ -98,7 +102,7 @@ function Home() {
             <AccordionButton>
               <Box flex="1" textAlign="left">
                 <Heading as="h2" size="lg">
-                  Step 1: Register for the exam
+                  Step 1: Register for the evaluation
                 </Heading>
               </Box>
               <AccordionIcon />
@@ -206,7 +210,7 @@ function Home() {
                     alt="preview-idDoc"
                   />
                 )}
-                <Text>Id file (png or jpg)</Text>
+                <Text>ID file (png or jpg)</Text>
                 <input
                   placeholder="Identification file"
                   type="file"
@@ -246,13 +250,32 @@ function Home() {
                     onClick={() => {
                       Swal.fire({
                         title: "Confidentiality agreement",
-                        text: "example text",
+                        html: `GENERAL DISPOSITIONS <br/><br/>
+                        Your privacy and trust are very important to Spanish Training Academy, SC. Therefore, we want to inform the holder (s) of the Personal Data (hereinafter, (the) "Holder (s)" or "You") how Spanish Training Academy safeguards the integrity, privacy and protection of your Personal Data (as said term is defined below), in adherence to the Ley Federal de Protección de Datos Personales en Posesión de los Particulares (“Ley de Datos”) and its Regulations and the essential characteristics of its treatment, so that the Holders have full control and decision over them. Therefore, we recommend that you read the following information carefully.<br/><br/>
+                        IDENTITY AND ADDRESS OF THE RESPONSIBLE PARTY<br/><br/>
+                        The responsible party, Spanish Training Academy S.C. (hereinafter, “STA”), is a legally constituted and validly existing company in accordance with the laws of the United Mexican States, with registered office at Manuel Navarrete 49 Int. 202, Col. Algarín, Cuauhtémoc, Ciudad de México, México, C.P. 06880.<br/><br/>
+                        PERSONAL DATA THAT MAY BE COLLECTED<br/><br/>
+                        By registering for the Spanish Evaluation service for candidates and / or any other services and / or courses that are taught in and / or through STA, you agree that STA will collect the necessary Personal Data as part of your registration . STA may collect from you, stating without limitation (jointly referred to as "Personal Data"), full name, CURP, RFC, address, date of birth, telephone numbers, emails, address, nationality, etc. In case of requesting electronic invoicing, additionally, RFC, CURP, tax address and other necessary data for such purposes may be collected from you. STA may collect supplementary data from the Holder, but not limited to, for the registration process, and depending on the course, schooling, occupation, family environment, data on your social, emotional, health, sports behavior, as well as data to be collected at the time of enrollment and follow-up to allow the Holder to be evaluated regarding the STA courses. Similarly, STA will collect information from the Holders when they communicate by telephone to request information on the courses taught at STA, such as name, address, age, gender, telephone numbers, emails, etc.<br/><br/>
+                        PURPOSES OF THE PROCESSING OF YOUR PERSONAL DATA<br/><br/>
+                        The Personal Data mentioned in the previous section that STA collects, will be used as part of the Holder's file, as contact information to locate him/her, in case of emergencies, reports, notices and / or messages that need to be delivered directly, to verify tuition fees, reminders and / or delays in paying them. Likewise, the Holder's Personal Data will be used to comply with an administrative control, generate enrollments, reports, quality evaluation of services and / or internal statistical studies on teaching and / or evaluation services in STA. In general terms, any reason that directly or indirectly implies the provision of teaching and / or evaluation services provided through STA, as well as the evaluation of their provision. Each and every one of the Personal Data that the Holder enters or voluntarily provides to the person in charge, by any means, will be subject to the internal security and privacy policies.<br/><br/>
+                        TRANSFER OF PERSONAL DATA<br/><br/>
+                        STA may transfer your personal data to government agencies that officially require STA in order for it to provide information on the Holder, given that such information is in the possession of STA.<br/><br/>
+                        STA at no time and under no circumstances will facilitate, sell, give away or rent any information about you to third parties, except as indicated above and in the cases established by the Ley de Datos. The Responsible Party undertakes not to transfer Personal Data, except for the provisions set forth in the Ley de Datos, its regulations, and other applicable legal regulations.<br/><br/>
+                        ARCO RIGHTS<br/><br/>
+                        For the exercise of the rights of access, rectification, cancellation, opposition and revocation of consent to the processing of Personal Data ("ARCO" rights) that the Holders have provided to the person in charge for the purposes of Spanish level evaluation services for candidates and / or any other services and / or courses that from time to time are taught in and / or through STA, the latter agrees that they may be enforced by the Holder either by himself or through a legal representative, and must be correctly identified or accredited, by calling the phone 55 33 05 51 78 with  Customer service hours Monday to Friday from 9:00 am to 18:00 pm clearly and precisely describing the Personal Data with respect to which it is sought to exercise any of the ARCO rights.<br/><br/>
+                        In the call to exercise ARCO rights, you must provide an email address and / or telephone number to be able to communicate the response to your request or to be able to contact you in case you require additional information in relation to your request. Likewise, you must send us to the email contacto@spanish-ta.com a copy of your current official identification in order to prove your identity (voter ID, passport, military card, professional card or immigration form (FM-3 or the one in your case replaces the latter) and if applicable, if you act through a legal representative, you must additionally attach the documents that prove the identity and powers of representation of the latter (simple copy in printed or electronic format of the Simple power of attorney with autograph signature of the Holder, the agent or representative and their corresponding valid official identifications: voter ID, passport, military card, professional card or immigration form (FM-3 or the one that replaces the latter).<br/><br/>
+                        In the case of requests for rectification of Personal Data, the respective Holder must also indicate the modifications to be made and provide the documentation that supports their request.<br/><br/>
+                        The person responsible for the protection of Personal Data will respond to the respective Holder within a maximum period of 20 (twenty) business days, counted from the date on which the request for access, rectification, cancellation or opposition was received, the determination adopted, for the purpose of that, if appropriate, it becomes effective within 15 (fifteen) calendar days following the date on which the response is communicated to the Holder.<br/><br/>
+                        CHANGES TO THE PRIVACY NOTICE<br/><br/>
+                        Any substantial or total change made to this Privacy Notice may be made by STA by publishing a notice informing about the change on our page www.spanish-ta.com or by email to the address of the Holder that for such purposes is registered. It is your responsibility to review the updated content of the Privacy Notice available on the Internet page www.spanish-ta.com. STA assumes that, if the Holder does not oppose the changes, it means that he has read, understood and consented to the terms established therein. We recommend that you visit, from time to time, the STA website www.spanish-ta.com to find out about any changes to this Privacy Notice.<br/><br/>`,
                         icon: "info",
+                        grow: "row",
                         confirmButtonText: "I agree",
                       }).then(() => setIsTermsAccepted(!isTermsAccepted));
                     }}
                   >
-                    I accept the terms and conditions.
+                    I accept the Comprehensive Privacy Notice for the Protection
+                    of Personal Data.
                   </p>
                 </Checkbox>
                 <Checkbox
@@ -267,8 +290,26 @@ function Home() {
                     onClick={() => {
                       Swal.fire({
                         title: "Confidentiality agreement",
-                        text: "example text",
+                        html: `GENERAL DISPOSITIONS <br/><br/>
+                        Your privacy and trust are very important to Spanish Training Academy, SC. Therefore, we want to inform the holder (s) of the Personal Data (hereinafter, (the) "Holder (s)" or "You") how Spanish Training Academy safeguards the integrity, privacy and protection of your Personal Data (as said term is defined below), in adherence to the Ley Federal de Protección de Datos Personales en Posesión de los Particulares (“Ley de Datos”) and its Regulations and the essential characteristics of its treatment, so that the Holders have full control and decision over them. Therefore, we recommend that you read the following information carefully.<br/><br/>
+                        IDENTITY AND ADDRESS OF THE RESPONSIBLE PARTY<br/><br/>
+                        The responsible party, Spanish Training Academy S.C. (hereinafter, “STA”), is a legally constituted and validly existing company in accordance with the laws of the United Mexican States, with registered office at Manuel Navarrete 49 Int. 202, Col. Algarín, Cuauhtémoc, Ciudad de México, México, C.P. 06880.<br/><br/>
+                        PERSONAL DATA THAT MAY BE COLLECTED<br/><br/>
+                        By registering for the Spanish Evaluation service for candidates and / or any other services and / or courses that are taught in and / or through STA, you agree that STA will collect the necessary Personal Data as part of your registration . STA may collect from you, stating without limitation (jointly referred to as "Personal Data"), full name, CURP, RFC, address, date of birth, telephone numbers, emails, address, nationality, etc. In case of requesting electronic invoicing, additionally, RFC, CURP, tax address and other necessary data for such purposes may be collected from you. STA may collect supplementary data from the Holder, but not limited to, for the registration process, and depending on the course, schooling, occupation, family environment, data on your social, emotional, health, sports behavior, as well as data to be collected at the time of enrollment and follow-up to allow the Holder to be evaluated regarding the STA courses. Similarly, STA will collect information from the Holders when they communicate by telephone to request information on the courses taught at STA, such as name, address, age, gender, telephone numbers, emails, etc.<br/><br/>
+                        PURPOSES OF THE PROCESSING OF YOUR PERSONAL DATA<br/><br/>
+                        The Personal Data mentioned in the previous section that STA collects, will be used as part of the Holder's file, as contact information to locate him/her, in case of emergencies, reports, notices and / or messages that need to be delivered directly, to verify tuition fees, reminders and / or delays in paying them. Likewise, the Holder's Personal Data will be used to comply with an administrative control, generate enrollments, reports, quality evaluation of services and / or internal statistical studies on teaching and / or evaluation services in STA. In general terms, any reason that directly or indirectly implies the provision of teaching and / or evaluation services provided through STA, as well as the evaluation of their provision. Each and every one of the Personal Data that the Holder enters or voluntarily provides to the person in charge, by any means, will be subject to the internal security and privacy policies.<br/><br/>
+                        TRANSFER OF PERSONAL DATA<br/><br/>
+                        STA may transfer your personal data to government agencies that officially require STA in order for it to provide information on the Holder, given that such information is in the possession of STA.<br/><br/>
+                        STA at no time and under no circumstances will facilitate, sell, give away or rent any information about you to third parties, except as indicated above and in the cases established by the Ley de Datos. The Responsible Party undertakes not to transfer Personal Data, except for the provisions set forth in the Ley de Datos, its regulations, and other applicable legal regulations.<br/><br/>
+                        ARCO RIGHTS<br/><br/>
+                        For the exercise of the rights of access, rectification, cancellation, opposition and revocation of consent to the processing of Personal Data ("ARCO" rights) that the Holders have provided to the person in charge for the purposes of Spanish level evaluation services for candidates and / or any other services and / or courses that from time to time are taught in and / or through STA, the latter agrees that they may be enforced by the Holder either by himself or through a legal representative, and must be correctly identified or accredited, by calling the phone 55 33 05 51 78 with  Customer service hours Monday to Friday from 9:00 am to 18:00 pm clearly and precisely describing the Personal Data with respect to which it is sought to exercise any of the ARCO rights.<br/><br/>
+                        In the call to exercise ARCO rights, you must provide an email address and / or telephone number to be able to communicate the response to your request or to be able to contact you in case you require additional information in relation to your request. Likewise, you must send us to the email contacto@spanish-ta.com a copy of your current official identification in order to prove your identity (voter ID, passport, military card, professional card or immigration form (FM-3 or the one in your case replaces the latter) and if applicable, if you act through a legal representative, you must additionally attach the documents that prove the identity and powers of representation of the latter (simple copy in printed or electronic format of the Simple power of attorney with autograph signature of the Holder, the agent or representative and their corresponding valid official identifications: voter ID, passport, military card, professional card or immigration form (FM-3 or the one that replaces the latter).<br/><br/>
+                        In the case of requests for rectification of Personal Data, the respective Holder must also indicate the modifications to be made and provide the documentation that supports their request.<br/><br/>
+                        The person responsible for the protection of Personal Data will respond to the respective Holder within a maximum period of 20 (twenty) business days, counted from the date on which the request for access, rectification, cancellation or opposition was received, the determination adopted, for the purpose of that, if appropriate, it becomes effective within 15 (fifteen) calendar days following the date on which the response is communicated to the Holder.<br/><br/>
+                        CHANGES TO THE PRIVACY NOTICE<br/><br/>
+                        Any substantial or total change made to this Privacy Notice may be made by STA by publishing a notice informing about the change on our page www.spanish-ta.com or by email to the address of the Holder that for such purposes is registered. It is your responsibility to review the updated content of the Privacy Notice available on the Internet page www.spanish-ta.com. STA assumes that, if the Holder does not oppose the changes, it means that he has read, understood and consented to the terms established therein. We recommend that you visit, from time to time, the STA website www.spanish-ta.com to find out about any changes to this Privacy Notice.<br/><br/>`,
                         icon: "info",
+                        grow: "row",
                         confirmButtonText: "I agree",
                       }).then(() => setIsPoliciesAccepted(!isPoliciesAccepted));
                     }}
@@ -287,7 +328,7 @@ function Home() {
                       email &&
                       gender &&
                       nationality &&
-                      phone &&
+                      // phone &&
                       firstLanguage &&
                       vacancy &&
                       eraFile &&
