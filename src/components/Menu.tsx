@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { ColorModeSwitcher } from "../ColorModeSwitcher";
+// import { ColorModeSwitcher } from "../ColorModeSwitcher";
 
 const Image = styled.img<{ width: string }>`
   width: ${({ width }) => width || "300px"};
@@ -21,9 +21,9 @@ const Menu = () => {
   return (
     <Header>
       <Link to="/">
-        <Image width="300px" src={logo} alt="logo-spanish-trading" />
+        <Image width="320px" src={logo} alt="logo-spanish-trading" />
       </Link>
-      <ColorModeSwitcher />
+      {/* <ColorModeSwitcher /> */}
     </Header>
   );
 };

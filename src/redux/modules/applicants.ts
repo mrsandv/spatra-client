@@ -1,10 +1,10 @@
-import { toast } from 'react-toastify';
-import Swal from 'sweetalert2';
-import * as applicantsAPI from '../../api/applicants';
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import * as applicantsAPI from "../../api/applicants";
 
 const GET_ALL_APPLICANTS = "applicants/GET_ALL_APPLICANTS";
-const SEARCH_APPLICANT = 'applicants/SEARCH_APPLICANT';
-const NEW_APPLICANT = 'applicants/NEW_APPLICANT';
+const SEARCH_APPLICANT = "applicants/SEARCH_APPLICANT";
+const NEW_APPLICANT = "applicants/NEW_APPLICANT";
 
 const INITIAL_STATE = {
   applicants: [],
@@ -23,7 +23,7 @@ export default function applicants(state = INITIAL_STATE, action: any) {
     default:
       return state;
   }
-};
+}
 
 export const getApplicants = () => async (dispatch: any) => {
   try {
@@ -31,27 +31,28 @@ export const getApplicants = () => async (dispatch: any) => {
     dispatch({
       type: GET_ALL_APPLICANTS,
       payload: res.data,
-    })
+    });
   } catch (err) {
     console.log(err);
   }
 };
 
-export const saveApplicant = (data: any) => async (dispatch:any) => {
+export const saveApplicant = (data: any) => async (dispatch: any) => {
   try {
-    const res = await applicantsAPI.saveApplicant(data);
+    const res: any = await applicantsAPI.saveApplicant(data);
     Swal.fire({
-      title: 'Register is success!',
+      title: "Register is success!",
       text: `Save your folio number: ${res.data._id}`,
-      icon: 'success',
-      confirmButtonText: 'Confirm'
-    })
-  } catch (err) {
+      icon: "success",
+      confirmButtonText: "Confirm",
+    });
+  } catch (err: any) {
+    console.log(err.response.data);
     Swal.fire({
-      title: 'Already registered!',
-      text: 'This email is already registered',
-      icon: 'error',
-      confirmButtonText: 'Confirm'
+      title: "Already registered!",
+      text: "This email is already registered",
+      icon: "error",
+      confirmButtonText: "Confirm",
     });
   }
 };
@@ -62,13 +63,13 @@ export const searchApplicantByFolio = (folio: any) => async (dispatch: any) => {
     dispatch({
       type: SEARCH_APPLICANT,
       payload: res.data,
-    })
+    });
   } catch (err) {
     Swal.fire({
-      title: 'Not found!',
-      text: 'This folio is not registered',
-      icon: 'error',
-      confirmButtonText: 'Confirm'
+      title: "Not found!",
+      text: "This folio is not registered",
+      icon: "error",
+      confirmButtonText: "Confirm",
     });
   }
 };
@@ -79,13 +80,13 @@ export const searchApplicantByEmail = (email: any) => async (dispatch: any) => {
     dispatch({
       type: SEARCH_APPLICANT,
       payload: res.data,
-    })
+    });
   } catch (err) {
     Swal.fire({
-      title: 'Not found!',
-      text: 'This email is not registered',
-      icon: 'error',
-      confirmButtonText: 'Confirm'
+      title: "Not found!",
+      text: "This email is not registered",
+      icon: "error",
+      confirmButtonText: "Confirm",
     });
   }
 };
@@ -98,4 +99,4 @@ export const removeApplicant = (folio: any) => async (dispatch: any) => {
   } catch (err) {
     console.log(err);
   }
-}
+};
